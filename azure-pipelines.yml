@@ -19,11 +19,11 @@ jobs:
           npx playwright install --with-deps
         displayName: "Install Playwright Browsers"
       - script: |
-          npx playwright test
+          run test
         displayName: "Run Playwright tests"
       - publish: npx test-results-reporter publish -c config.json
         artifact: playwright-report     
-
+        continueOnError: true
         # always create the artifact, this is useful for debugging failed tests
         condition: always()
       
