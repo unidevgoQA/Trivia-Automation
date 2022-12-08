@@ -26,12 +26,8 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
 
-  reporter: process.env.CI ? [["junit", {
+  reporter: [["junit", {
     outputFile: "results.xml"
-  }]] : [["json", {
-    outputFile: "report.json"
-  }], ["html", {
-    open: "never"
   }]],
 
   use: {

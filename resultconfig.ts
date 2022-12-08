@@ -12,7 +12,7 @@
           "results": [
             {
               "type": "testng",
-              "files": ["playwright-report/index.html"]
+              "files": ["results.xml"]
             }
           ]
         }
