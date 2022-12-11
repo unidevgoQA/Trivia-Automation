@@ -22,8 +22,8 @@ jobs:
           npx playwright test
         displayName: "Run Playwright tests"
       - publish: $(System.DefaultWorkingDirectory)
-      -   task: PublishTestResults@2
-          inputs:
+      
+        inputs:
           testResultsFormat: 'JUnit'
           testResultsFiles: 'result.xml'
           mergeTestResults: true
