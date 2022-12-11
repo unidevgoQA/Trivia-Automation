@@ -17,7 +17,8 @@
     "clipboardy": "^2.3.0",
     "fs": "^0.0.1-security",
     "ts-node": "10.9.1",
-    "typescript": "4.8.3"
+    "typescript": "4.8.3",
+    "test-results-reporter": "^1.0.15"
   },
   "dependencies": {
     "test-results-reporter": "^1.0.15"
