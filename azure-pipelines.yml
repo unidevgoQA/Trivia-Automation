@@ -22,8 +22,7 @@ jobs:
           npx playwright test
         displayName: "Run Playwright tests"
       - publish: $(System.DefaultWorkingDirectory)
-        artifact: drop
-      
+        artifact: drop      
         testResultsFormat: 'JUnit'
         testResultsFiles: 'result.xml'
         mergeTestResults: true        
