@@ -1,4 +1,5 @@
 import test, { expect } from "@fixtures/basePages";
+import { devices, chromium } from "@playwright/test";
 import * as data from "@testData/login.cred.json"
 import Env from "@utils/environment";
 import { readFileSync } from 'fs'
@@ -350,6 +351,92 @@ test("005SU-006 | Verify Additional Information Section", async ({loginPage, Mai
 
 await functions.mobileSignUpAdditionalInformation()
 
+
+
+
+})
+
+
+test("007PD-0011 | Validate Game Successfully open in mobile screen", async ({ loginPage, prizeDropPage }) => {
+        const browser = await chromium.launch({ headless: false });
+        const context = await browser.newContext({ ...devices["Pixel 5"], permissions: ["microphone","camera"] });
+        const page = await context.newPage();
+
+        await page.goto("/admin/#/sign-in");
+        await page.fill("input[type='text']", "qa-1")
+        await page.fill("input[type='password']", "mFkTylCDNC")
+    
+        await Promise.all([
+            page.waitForNavigation(),
+            page.click("button:has-text('Login')")
+    ])
+
+
+        await page.click("//p[text()='Prize Drop']")
+
+        await page.frameLocator('iframe').locator('text=AutoStart >> button').nth(1).click();
+
+
+//     await page.waitForTimeout(3000)
+//         await prizeDropPage.clickPrizeDropSection()
+
+        //click Mobile Link Btn
+        // await prizeDropPage.clickMobileLinkBtn()
+
+        const [page1] = await Promise.all([
+                page.waitForEvent('popup'),
+                page.frameLocator('iframe').locator('text=Open Link').click()
+        ]);
+
+        
+        await page1.fill('[name="phone"]', "310-260-6620")
+
+        await page1.fill('[name="email"]', "jon@email.com")
+  
+        await page1.fill('[name="age"]', "23")
+  
+        await page1.click('//input[@name="birthDate"]');
+  
+        await page1.waitForTimeout(5000)
+  
+        await page1.click("//button[text()='27']");
+  
+        await page1.click("//button[text()='OK']");
+  
+        await page1.fill('[name="zipCode"]', "1223")
+  
+        await page1.click("//button[text()='Submit']");
+  
+        await page1.waitForTimeout(2000)  
+
+
+
+        await page1.click("//p[text()='USER PROFILE']");
+
+        await page1.locator('//input[@type="text"]').fill("Auto Man");
+
+        await page1.waitForTimeout(5000)
+
+
+        await page1.click("//p[text()='RULES']");
+        await page1.waitForTimeout(6000)
+
+
+        await page1.click("//p[text()='HOW TO PLAY']");
+        await page1.waitForTimeout(6000)
+
+
+
+        await page1.click("//button[@value='prize']");
+
+        await page1.waitForTimeout(5000)
+
+        await page1.click("//p[text()='HOME']");
+        await page1.waitForTimeout(2000)
+
+        // await page1.frameLocator('iframe').locator("//button[text()='START']").click();
+
+        // await page.locator("//button[text()='START']").click({force:true})
 
 
 

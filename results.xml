@@ -1,23 +1,27 @@
-<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="83.36345100003481">
-<testsuite name="tests\01Login\001Login.test.ts" timestamp="1670502869138" hostname="" tests="3" failures="0" skipped="0" time="81.493" errors="0">
-<testcase name="TLL001-01 | Verify login with valid credentials" classname="tests\01Login\001Login.test.ts › TLL001-01 | Verify login with valid credentials" time="26.026">
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="161.48737199997902">
+<testsuite name="tests\02MainMenu\005SignUp.test.ts" timestamp="1670577270672" hostname="" tests="3" failures="0" skipped="0" time="159.126" errors="0">
+<testcase name="Verify SignUp Page Functionality" classname="tests\02MainMenu\005SignUp.test.ts › Verify SignUp Page Functionality" time="61.11">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results\tests-01Login-001Login-TLL001-01-Verify-login-with-valid-credentials\test-finished-1.png]]
+[[ATTACHMENT|test-results\tests-02MainMenu-005SignUp-Verify-SignUp-Page-Functionality\test-finished-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="TLL001-02 | Verify login with invalid credentials" classname="tests\01Login\001Login.test.ts › TLL001-02 | Verify login with invalid credentials" time="23.081">
+<testcase name="005SU-006 | Verify Additional Information Section" classname="tests\02MainMenu\005SignUp.test.ts › 005SU-006 | Verify Additional Information Section" time="29.522">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results\tests-01Login-001Login-TLL001-02-Verify-login-with-invalid-credentials\test-finished-1.png]]
+[[ATTACHMENT|test-results\tests-02MainMenu-005SignUp-005SU-006-Verify-Additional-Information-Section\test-finished-1.png]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="TLL001-03 | Verify login with UserName and Password" classname="tests\01Login\001Login.test.ts › TLL001-03 | Verify login with UserName and Password" time="32.386">
+<testcase name="007PD-0011 | Validate Game Successfully open in mobile screen" classname="tests\02MainMenu\005SignUp.test.ts › 007PD-0011 | Validate Game Successfully open in mobile screen" time="68.494">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|test-results\tests-01Login-001Login-TLL001-03-Verify-login-with-UserName-and-Password\test-finished-1.png]]
+[[ATTACHMENT|test-results\tests-02MainMenu-005SignUp-007PD-0011-Validate-Game-Successfully-open-in-mobile-screen\test-finished-1.png]]
+
+[[ATTACHMENT|test-results\tests-02MainMenu-005SignUp-007PD-0011-Validate-Game-Successfully-open-in-mobile-screen\test-finished-2.png]]
+
+[[ATTACHMENT|test-results\tests-02MainMenu-005SignUp-007PD-0011-Validate-Game-Successfully-open-in-mobile-screen\test-finished-3.png]]
 ]]>
 </system-out>
 </testcase>
