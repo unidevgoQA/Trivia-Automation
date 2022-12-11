@@ -1,12 +1,12 @@
 name: Playwright Tests
 trigger:
   - main
-
+  - master
 jobs:
   - job: test
     timeoutInMinutes: 60
     pool:
-      vmImage: "windows-2019"
+      vmImage: "ubuntu-latest"
     steps:
       - task: NodeTool@0
         inputs:
@@ -20,12 +20,10 @@ jobs:
         displayName: "Install Playwright Browsers"
       - script: |
           npx playwright test
-        displayName: "Run Playwright tests"          
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
+        displayName: "Run Playwright tests"
+      - publish: $(System.DefaultWorkingDirectory)
+        artifact: drop
+        continueOnError: true
       - script: npx test-results-reporter publish $(System.DefaultWorkingDirectory)/config.json
         # always create the artifact, this is useful for debugging failed tests
         condition: always()
-        continueOnError: true
-        
