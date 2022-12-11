@@ -23,7 +23,10 @@ jobs:
         displayName: "Run Playwright tests"
       - publish: $(System.DefaultWorkingDirectory)
         artifact: drop
-        continueOnError: true
-      - script: npx test-results-reporter publish $(System.DefaultWorkingDirectory)/config.json
+        continueOnError: true        
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'results.xml'
+        mergeTestResults: true
+      - script: npx test-results-reporter publish config.json
         # always create the artifact, this is useful for debugging failed tests
         condition: always()
