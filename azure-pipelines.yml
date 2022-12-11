@@ -19,10 +19,8 @@ jobs:
           npx playwright install --with-deps
         displayName: "Install Playwright Browsers"
       - script: |
-          npx playwright test     
-
-        displayName: "Run Playwright tests"
-
+          npx playwright test
+        displayName: "Run Playwright tests"          
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
