@@ -25,4 +25,5 @@ jobs:
         artifact: drop        
       - script: npx test-results-reporter publish config.json
         # always create the artifact, this is useful for debugging failed tests
+        continueOnError: true
         condition: always()
