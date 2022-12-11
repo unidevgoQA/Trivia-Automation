@@ -6,7 +6,7 @@ jobs:
   - job: test
     timeoutInMinutes: 60
     pool:
-      vmImage: "ubuntu-latest"
+      vmImage: "windows-2019"
     steps:
       - task: NodeTool@0
         inputs:
