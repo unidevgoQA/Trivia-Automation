@@ -14,7 +14,7 @@ const config = defineConfig({
       "results": [
         {
           "type": "testng",
-          "files": ["./results.xml"]
+          "files": ["results.xml"]
         }
       ]
     }
