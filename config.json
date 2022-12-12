@@ -12,7 +12,7 @@
       "results": [
         {
           "type": "testng",
-          "files": ["$(System.DefaultWorkingDirectory)/drop/results.xml"]
+          "files": ["results.xml"]
         }
       ]
     }
