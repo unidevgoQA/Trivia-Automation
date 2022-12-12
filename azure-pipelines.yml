@@ -19,12 +19,11 @@ jobs:
           npx playwright install --with-deps
         displayName: "Install Playwright Browsers"
       - script: |
-          npx playwright test
-          # npx test-results-reporter publish -c config.json
+          npx playwright test          
         displayName: "Run Playwright tests"
       - publish: $(System.DefaultWorkingDirectory)
         artifact: drop        
-      - script: npx test-results-reporter publish -c config.json
+      - script: npx test-results-reporter publish -c config.js
         # always create the artifact, this is useful for debugging failed tests
         continueOnError: true
         condition: always()
