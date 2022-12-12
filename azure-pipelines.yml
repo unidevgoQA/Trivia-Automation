@@ -26,4 +26,11 @@ jobs:
       - script: npx test-results-reporter publish -c config.js
         # always create the artifact, this is useful for debugging failed tests
         continueOnError: true
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '*.xml'
+          searchFolder: '$(System.DefaultWorkingDirectory)/drop/'
+          mergeTestResults: true
+          testRunTitle: 'Publish Test Results'
         condition: always()
