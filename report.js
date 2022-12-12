@@ -21,6 +21,4 @@ const config = defineConfig({
   ]
 });
 
-await publish({ config });
-
-
+await publish({ config })
