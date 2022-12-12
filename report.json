@@ -27,7 +27,7 @@
             {
               "type": "testng",
               "files": [
-                "results.xml"
+                "./results.xml"
               ]
             }
           ]
