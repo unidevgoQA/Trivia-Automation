@@ -21,10 +21,6 @@ jobs:
           npx playwright test          
           displayName: "Run Playwright tests"               
       -   publish: $(System.DefaultWorkingDirectory)
-          artifact: drop            
-      - script: npx test-results-reporter publish -c ./report.json
-        displayName: Reporting Results
+          artifact: drop          
         # always create the artifact, this is useful for debugging failed tests
-
-        continueOnError: true
-        condition: always()
+          condition: always()
