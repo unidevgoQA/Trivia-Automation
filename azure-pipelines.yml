@@ -21,6 +21,12 @@ jobs:
           npx playwright test          
           displayName: "Run Playwright tests"               
       -   publish: $(System.DefaultWorkingDirectory)
-          artifact: drop          
+          artifact: drop 
+
+                   
+          env:
+            ENVIRONMENT_URL: ${{ SLACK_BOT_USER_OAUTH_TOKEN }}
+    
+
         # always create the artifact, this is useful for debugging failed tests
           condition: always()
