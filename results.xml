@@ -1,16 +1,25 @@
-<testsuites id="" name="" tests="3" failures="0" skipped="3" errors="0" time="8.252263000000035">
-<testsuite name="tests\01Login\001Login.test.ts" timestamp="1670849234611" hostname="" tests="3" failures="0" skipped="3" time="1.408" errors="0">
-<testcase name="TLL001-01 | Verify login with valid credentials" classname="tests\01Login\001Login.test.ts › TLL001-01 | Verify login with valid credentials" time="1.408">
-<skipped>
-</skipped>
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="98.60665199999883">
+<testsuite name="tests\01Login\001Login.test.ts" timestamp="1670871913128" hostname="" tests="3" failures="0" skipped="0" time="97.012" errors="0">
+<testcase name="TLL001-01 | Verify login with valid credentials" classname="tests\01Login\001Login.test.ts › TLL001-01 | Verify login with valid credentials" time="26.736">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\tests-01Login-001Login-TLL001-01-Verify-login-with-valid-credentials\test-finished-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="TLL001-02 | Verify login with invalid credentials" classname="tests\01Login\001Login.test.ts › TLL001-02 | Verify login with invalid credentials" time="0">
-<skipped>
-</skipped>
+<testcase name="TLL001-02 | Verify login with invalid credentials" classname="tests\01Login\001Login.test.ts › TLL001-02 | Verify login with invalid credentials" time="42.966">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\tests-01Login-001Login-TLL001-02-Verify-login-with-invalid-credentials\test-finished-1.png]]
+]]>
+</system-out>
 </testcase>
-<testcase name="TLL001-03 | Verify login with UserName and Password" classname="tests\01Login\001Login.test.ts › TLL001-03 | Verify login with UserName and Password" time="0">
-<skipped>
-</skipped>
+<testcase name="TLL001-03 | Verify login with UserName and Password" classname="tests\01Login\001Login.test.ts › TLL001-03 | Verify login with UserName and Password" time="27.31">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\tests-01Login-001Login-TLL001-03-Verify-login-with-UserName-and-Password\test-finished-1.png]]
+]]>
+</system-out>
 </testcase>
 </testsuite>
 </testsuites>

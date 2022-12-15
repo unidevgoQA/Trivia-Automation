@@ -3,8 +3,7 @@ trigger:
   - main
   - master
 jobs:
-  - job: test
-    timeoutInMinutes: 60
+  - job: test    
     pool:
       vmImage: "windows-2019"
     steps:
@@ -20,11 +19,13 @@ jobs:
         displayName: "Install Playwright Browsers"
       - script: |
           npx playwright test          
-        displayName: "Run Playwright tests"
-      - publish: $(System.DefaultWorkingDirectory)
-        artifact: drop        
-      - script: npx test-results-reporter publish -c config.js
+          displayName: "Run Playwright tests"     
+      -   publish: $(System.DefaultWorkingDirectory)
+          artifact: drop      
+      - script: npx test-results-reporter publish -c ./report.json
+        displayName: Reporting Results
         # always create the artifact, this is useful for debugging failed tests
+<<<<<<< Updated upstream
         continueOnError: true
       - task: PublishTestResults@2
         inputs:
@@ -33,4 +34,7 @@ jobs:
           searchFolder: '$(System.DefaultWorkingDirectory)/drop/'
           mergeTestResults: true
           testRunTitle: 'Publish Test Results'
+=======
+            
+>>>>>>> Stashed changes
         condition: always()
