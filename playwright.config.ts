@@ -52,7 +52,7 @@ const config: PlaywrightTestConfig = {
   reporter: process.env.CI
   ? [
       [
-        "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+        "node_modules/playwright-slack-report/dist/src/SlackReporter.js",
         {
           channels: ["slack-testing"], // provide one or more Slack channels
           sendResults: "always", // "always" , "on-failure", "off"
