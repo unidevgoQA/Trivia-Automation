@@ -25,6 +25,18 @@ jobs:
       - script: npx test-results-reporter publish -c ./report.json
         displayName: Reporting Results
         # always create the artifact, this is useful for debugging failed tests
+<<<<<<< Updated upstream
 
         continueOnError: true      
+=======
+        continueOnError: true
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '*.xml'
+          searchFolder: '$(System.DefaultWorkingDirectory)/drop/'
+          mergeTestResults: true
+          testRunTitle: 'Publish Test Results'
+
+>>>>>>> Stashed changes
         condition: always()

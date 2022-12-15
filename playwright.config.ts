@@ -49,11 +49,24 @@ const config: PlaywrightTestConfig = {
   //   }
   // ]],
     
+  reporter: process.env.CI
+  ? [
+      [
+        "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+        {
+          channels: ["slack-testing"], // provide one or more Slack channels
+          sendResults: "always", // "always" , "on-failure", "off"
+        },
+      ],
+      ["dot"],
+      ["list"],
+      ["html"],
+    ]
+  : [["dot"], ["list"], ["html"]],
   
-  
-  reporter: [["junit", {
-    outputFile: "results.xml"
-  }]],
+  // reporter: [["junit", {
+  //   outputFile: "results.xml"
+  // }]],
 
 
 
