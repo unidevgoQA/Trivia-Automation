@@ -1,4 +1,5 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
+require('dotenv').config()
 const { publish, defineConfig } = require('test-results-reporter');
 import { devices } from '@playwright/test';
 
