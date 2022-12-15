@@ -20,8 +20,7 @@ jobs:
       - script: |
           npx playwright test          
           displayName: "Run Playwright tests"               
-        env:
-            ENVIRONMENT_URL: ${{ SLACK_BOT_USER_OAUTH_TOKEN }}
+        
       -   publish: $(System.DefaultWorkingDirectory)
           artifact: drop           
           continueOnError: true
