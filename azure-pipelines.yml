@@ -22,7 +22,7 @@ jobs:
           displayName: "Run Playwright tests"               
         
       -   publish: $(System.DefaultWorkingDirectory)
-          artifact: drop           
+          artifact: playwright-report           
           continueOnError: true
           
     
