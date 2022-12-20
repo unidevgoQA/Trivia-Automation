@@ -75,7 +75,7 @@ const config: PlaywrightTestConfig = {
   // ],
 
   reporter: [['allure-playwright'],['./My-Reporter.js']],
-  globalTeardown:require.resolve("./mailer.js"), 
+  // globalTeardown:require.resolve("./mailer.js"), 
   
   
 
