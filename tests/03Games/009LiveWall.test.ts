@@ -4,11 +4,13 @@ import * as data from "@testData/login.cred.json"
 import Env from "@utils/environment";
 import { readFileSync } from 'fs'
 // const clipboard = require("clipboardy");
+import liveWallMobileScreenPage from "@pages/liveWallMobile.page";
+import BaseFunctions from "@base-function/baseFunctions";
 
 
 let url: any;
 
-let page: Page;
+
 
 // test.describe("Suite demo", () => {
 //         let page: Page;
@@ -51,6 +53,9 @@ test("009LW-001 | Validate Font Upload Functionality", async ({ loginPage, liveW
         //click Design Page
         await liveWallPage.clickDesignPage()
 
+
+        //click Design Page
+        await liveWallPage.clickDesignPage()
         //verify Fonts Title Text
         await liveWallPage.verifyFontsTitleText()
 
@@ -61,10 +66,12 @@ test("009LW-001 | Validate Font Upload Functionality", async ({ loginPage, liveW
         await liveWallPage.deleteUploadedFont()
 
 
-        //verify Upload Font Text
+        // //verify Upload Font Text
         await liveWallPage.verifyUploadFontText()
+        await page.waitForTimeout(2000)
 
         await functions.fontUploadFunction()
+
 
         //verify Upload Font Text
         await liveWallPage.clickToUploadFont()
@@ -100,6 +107,10 @@ test("009LW-002 | Validate Color Input Functionality", async ({ loginPage, liveW
 
         //click Design Page
         await liveWallPage.clickDesignPage()
+        await page.waitForTimeout(2000)
+
+        await liveWallPage.clickDesignPage()
+
 
         //click Clear Btn
         await liveWallPage.clickClearBtn()
@@ -203,6 +214,8 @@ test("009LW-003 | Validate Upload Image Delete Functionality", async ({ loginPag
 
         //click Design Page
         await liveWallPage.clickDesignPage()
+        await page.waitForTimeout(2000)
+        await liveWallPage.clickDesignPage()
 
 
 
@@ -227,7 +240,7 @@ test("009LW-003 | Validate Upload Image Delete Functionality", async ({ loginPag
         await functions.frameUploadFunction()
         //click To Upload Mobile Frame
         await liveWallPage.clickToUploadMobileFrame()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
 
         await page.waitForTimeout(8000)
@@ -261,42 +274,44 @@ test("009LW-004 | Validate Image Upload Functionality", async ({ loginPage, live
 
         //click Design Page
         await liveWallPage.clickDesignPage()
+        await page.waitForTimeout(2000)
+        await liveWallPage.clickDesignPage()
 
         await page.waitForTimeout(4000)
 
         //click ToUpload Feed Right Image
         await functions.logoImageUploadFunction()
         await liveWallPage.clickToUploadFeedRightImage()
-        await functions.fileUploadCropper() 
-       
+        await functions.fileUploadCropper()
+
         //click ToUpload FeedImage
         await liveWallPage.clickToUploadFeedLeftImage()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
 
         //click To Upload Feed Image
         await liveWallPage.clickToUploadFeedImage()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
         //click ToUpload Output Background
         await liveWallPage.clickToUploadOutputBackground()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
 
         //click To Upload Output Frame
         await liveWallPage.clickToUploadOutputFrame()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
 
         //click To Upload FullScreen Logo
         await liveWallPage.clickToUploadFullScreenLogo()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
 
 
         //click To Upload Background
         await liveWallPage.clickToUploadBackground()
-        await functions.fileUploadCropper()        
+        await functions.fileUploadCropper()
 
 
         await page.waitForTimeout(8000)
@@ -330,6 +345,8 @@ test("009LW-005 | Validate Display Messages Functionality", async ({ loginPage, 
 
 
         //click Design Page
+        await liveWallPage.clickDesignPage()
+        await page.waitForTimeout(2000)
         await liveWallPage.clickDesignPage()
 
         //input Pre Live Text
@@ -383,103 +400,103 @@ test("009LW-005 | Validate Display Messages Functionality", async ({ loginPage, 
         await liveWallPage.preLiveInputBoxRemove()
 
 
- //input Post Live Text
+        //input Post Live Text
         await liveWallPage.postLiveInputBoxFonts()
-await liveWallPage.postLiveInputBoxArial()
-await liveWallPage.postLiveInputBoxBlocktype()
-await liveWallPage.postLiveInputBoxNormal()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxArial()
+        await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxNormal()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockH1()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockH1()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockH2()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockH2()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockH3()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockH3()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockH4()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockH4()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockH5()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockH5()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockH6()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockH6()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBlockquote()
-await liveWallPage.postLiveInputBoxBlocktype()
+        await liveWallPage.postLiveInputBoxBlockquote()
+        await liveWallPage.postLiveInputBoxBlocktype()
 
-await liveWallPage.postLiveInputBoxBold()
-await liveWallPage.postLiveInputBoxItalic()
-await liveWallPage.postLiveInputBoxUnderline()
-await liveWallPage.postLiveInputBoxsikethrough()
-await liveWallPage.postLiveInputBoxColorpk()
-await liveWallPage.postLiveInputBoxTextcl()
-await liveWallPage.postLiveInputBoxGreencl()
-await liveWallPage.postLiveInputBoxColorpk()
+        await liveWallPage.postLiveInputBoxBold()
+        await liveWallPage.postLiveInputBoxItalic()
+        await liveWallPage.postLiveInputBoxUnderline()
+        await liveWallPage.postLiveInputBoxsikethrough()
+        await liveWallPage.postLiveInputBoxColorpk()
+        await liveWallPage.postLiveInputBoxTextcl()
+        await liveWallPage.postLiveInputBoxGreencl()
+        await liveWallPage.postLiveInputBoxColorpk()
 
-await liveWallPage.postLiveInputBoxHighlightcl()
-await liveWallPage.postLiveInputBoxHighlightgrn()
-await liveWallPage.postLiveInputBoxLeft()
-await liveWallPage.postLiveInputBoxCenter()
-await liveWallPage.postLiveInputBoxRight()
-await liveWallPage.postLiveInputBoxOutdent()
-await liveWallPage.postLiveInputBoxIndent()
-await liveWallPage.postLiveInputBoxOrdered()
-await liveWallPage.postLiveInputBoxUnOrdered()
-await liveWallPage.postLiveInputBoxRemove()
+        await liveWallPage.postLiveInputBoxHighlightcl()
+        await liveWallPage.postLiveInputBoxHighlightgrn()
+        await liveWallPage.postLiveInputBoxLeft()
+        await liveWallPage.postLiveInputBoxCenter()
+        await liveWallPage.postLiveInputBoxRight()
+        await liveWallPage.postLiveInputBoxOutdent()
+        await liveWallPage.postLiveInputBoxIndent()
+        await liveWallPage.postLiveInputBoxOrdered()
+        await liveWallPage.postLiveInputBoxUnOrdered()
+        await liveWallPage.postLiveInputBoxRemove()
 
         //input Post Live Text
         await liveWallPage.inputPostLiveText()
 
         await liveWallPage.standByInputBoxFonts()
-await liveWallPage.standByInputBoxArial()
-await liveWallPage.standByInputBoxBlocktype()
-await liveWallPage.standByInputBoxNormal()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxArial()
+        await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxNormal()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockH1()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockH1()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockH2()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockH2()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockH3()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockH3()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockH4()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockH4()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockH5()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockH5()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockH6()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockH6()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBlockquote()
-await liveWallPage.standByInputBoxBlocktype()
+        await liveWallPage.standByInputBoxBlockquote()
+        await liveWallPage.standByInputBoxBlocktype()
 
-await liveWallPage.standByInputBoxBold()
-await liveWallPage.standByInputBoxItalic()
-await liveWallPage.standByInputBoxUnderline()
-await liveWallPage.standByInputBoxsikethrough()
-await liveWallPage.standByInputBoxColorpk()
-await liveWallPage.standByInputBoxTextcl()
-await liveWallPage.standByInputBoxGreencl()
-await liveWallPage.standByInputBoxColorpk()
+        await liveWallPage.standByInputBoxBold()
+        await liveWallPage.standByInputBoxItalic()
+        await liveWallPage.standByInputBoxUnderline()
+        await liveWallPage.standByInputBoxsikethrough()
+        await liveWallPage.standByInputBoxColorpk()
+        await liveWallPage.standByInputBoxTextcl()
+        await liveWallPage.standByInputBoxGreencl()
+        await liveWallPage.standByInputBoxColorpk()
 
-await liveWallPage.standByInputBoxHighlightcl()
-await liveWallPage.standByInputBoxHighlightgrn()
-await liveWallPage.standByInputBoxLeft()
-await liveWallPage.standByInputBoxCenter()
-await liveWallPage.standByInputBoxRight()
-await liveWallPage.standByInputBoxOutdent()
-await liveWallPage.standByInputBoxIndent()
-await liveWallPage.standByInputBoxOrdered()
-await liveWallPage.standByInputBoxUnOrdered()
-await liveWallPage.standByInputBoxRemove()
+        await liveWallPage.standByInputBoxHighlightcl()
+        await liveWallPage.standByInputBoxHighlightgrn()
+        await liveWallPage.standByInputBoxLeft()
+        await liveWallPage.standByInputBoxCenter()
+        await liveWallPage.standByInputBoxRight()
+        await liveWallPage.standByInputBoxOutdent()
+        await liveWallPage.standByInputBoxIndent()
+        await liveWallPage.standByInputBoxOrdered()
+        await liveWallPage.standByInputBoxUnOrdered()
+        await liveWallPage.standByInputBoxRemove()
 
         //input StandBy Message
         await liveWallPage.inputStandByMessage()
@@ -490,53 +507,53 @@ await liveWallPage.standByInputBoxRemove()
 
 
         await liveWallPage.lowConnectionMassageInputBoxFonts()
-await liveWallPage.lowConnectionMassageInputBoxArial()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
-await liveWallPage.lowConnectionMassageInputBoxNormal()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxArial()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxNormal()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockH1()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockH1()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockH2()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockH2()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockH3()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockH3()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockH4()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockH4()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockH5()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockH5()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockH6()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockH6()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBlockquote()
-await liveWallPage.lowConnectionMassageInputBoxBlocktype()
+        await liveWallPage.lowConnectionMassageInputBoxBlockquote()
+        await liveWallPage.lowConnectionMassageInputBoxBlocktype()
 
-await liveWallPage.lowConnectionMassageInputBoxBold()
-await liveWallPage.lowConnectionMassageInputBoxItalic()
-await liveWallPage.lowConnectionMassageInputBoxUnderline()
-await liveWallPage.lowConnectionMassageInputBoxsikethrough()
-await liveWallPage.lowConnectionMassageInputBoxColorpk()
-await liveWallPage.lowConnectionMassageInputBoxTextcl()
-await liveWallPage.lowConnectionMassageInputBoxGreencl()
-await liveWallPage.lowConnectionMassageInputBoxColorpk()
+        await liveWallPage.lowConnectionMassageInputBoxBold()
+        await liveWallPage.lowConnectionMassageInputBoxItalic()
+        await liveWallPage.lowConnectionMassageInputBoxUnderline()
+        await liveWallPage.lowConnectionMassageInputBoxsikethrough()
+        await liveWallPage.lowConnectionMassageInputBoxColorpk()
+        await liveWallPage.lowConnectionMassageInputBoxTextcl()
+        await liveWallPage.lowConnectionMassageInputBoxGreencl()
+        await liveWallPage.lowConnectionMassageInputBoxColorpk()
 
-await liveWallPage.lowConnectionMassageInputBoxHighlightcl()
-await liveWallPage.lowConnectionMassageInputBoxHighlightgrn()
-await liveWallPage.lowConnectionMassageInputBoxLeft()
-await liveWallPage.lowConnectionMassageInputBoxCenter()
-await liveWallPage.lowConnectionMassageInputBoxRight()
-await liveWallPage.lowConnectionMassageInputBoxOutdent()
-await liveWallPage.lowConnectionMassageInputBoxIndent()
-await liveWallPage.lowConnectionMassageInputBoxOrdered()
-await liveWallPage.lowConnectionMassageInputBoxUnOrdered()
-await liveWallPage.lowConnectionMassageInputBoxRemove()
+        await liveWallPage.lowConnectionMassageInputBoxHighlightcl()
+        await liveWallPage.lowConnectionMassageInputBoxHighlightgrn()
+        await liveWallPage.lowConnectionMassageInputBoxLeft()
+        await liveWallPage.lowConnectionMassageInputBoxCenter()
+        await liveWallPage.lowConnectionMassageInputBoxRight()
+        await liveWallPage.lowConnectionMassageInputBoxOutdent()
+        await liveWallPage.lowConnectionMassageInputBoxIndent()
+        await liveWallPage.lowConnectionMassageInputBoxOrdered()
+        await liveWallPage.lowConnectionMassageInputBoxUnOrdered()
+        await liveWallPage.lowConnectionMassageInputBoxRemove()
 
-await liveWallPage.inputLowConnectionMassage()
+        await liveWallPage.inputLowConnectionMassage()
 
         await page.waitForTimeout(4000)
 
@@ -572,6 +589,7 @@ test("009LW-006 | Validate Live Selfie Cam Link Open Functionality", async ({ lo
         await liveWallPage.clickGameStartBtn()
 
         await page.waitForTimeout(2000)
+        await liveWallPage.clickGameStartBtn()
 
 
         //click Live Selfie Cam Out Put Link
@@ -676,23 +694,24 @@ test.skip("009LW-007 | Validate Live Selfie Cam OutPut Link open in Mobile", asy
         await page1.fill('[name="phone"]', "310-260-6620")
 
         await page1.fill('[name="email"]', "jon@email.com")
-  
-        await page1.fill('[name="age"]', "23")
-  
-        await page1.click('//input[@name="birthDate"]');
-  
-        await page1.waitForTimeout(5000)
-  
-        await page1.click("//button[text()='27']");
-  
-        await page1.click("//button[text()='OK']");
-  
-        await page1.fill('[name="zipCode"]', "1223")
-  
-        await page1.click("//button[text()='Submit']");
-  
-        await page1.waitForTimeout(2000)  
 
+        await page1.fill('[name="age"]', "23")
+
+        await page1.click('//input[@name="birthDate"]');
+
+        await page1.waitForTimeout(5000)
+
+        await page1.click("//button[text()='27']");
+
+        await page1.click("//button[text()='OK']");
+
+        await page1.fill('[name="zipCode"]', "1223")
+
+        await page1.click("//button[text()='Submit']");
+
+        await page1.waitForTimeout(2000)
+
+        await page1.click("//button[text()='Ok']")
 
         await page1.click("//p[text()='USER PROFILE']");
 
@@ -772,7 +791,7 @@ test.skip("009LW-008 | Validate Cue Section", async ({ loginPage, liveWallPage, 
         await page1.waitForTimeout(3000)
 
         // Click text=Next
-        await page1.locator("//button[text()='Next']").click({force:true});
+        await page1.locator("//button[text()='Next']").click({ force: true });
 
         // Click text=No streamsNext >> div
         await page1.locator('text=No streamsNext >> div').click();
@@ -879,10 +898,12 @@ test("009LW-0010 | Validate QR Code Section", async ({ loginPage, liveWallPage, 
 
         //click Live Wall Section
         await liveWallPage.clickLiveWallSection()
+        await page.waitForTimeout(2000)
 
         //click Mobile QR Code
         await liveWallPage.clickMobileQRCode()
-
+        await page.waitForTimeout(3000)
+        await liveWallPage.clickMobileQRCode()
 
         //click Copy QR Code Btn
         await liveWallPage.clickCopyQRCodeBtn()
@@ -945,7 +966,10 @@ test("009LW-0011 | Validate Analytics Section", async ({ loginPage, liveWallPage
         //click Analytics Btn
         await liveWallPage.clickAnalyticsBtn()
 
-        await page.waitForTimeout(3000)
+        await page.waitForTimeout(2000)
+        await liveWallPage.clickAnalyticsBtn()
+        await page.waitForTimeout(2000)
+
         // //download Anlytics
         // await liveWallPage.downloadAnlytics()
         //click Analytics Page Back Btn
@@ -963,3 +987,55 @@ test("009LW-0011 | Validate Analytics Section", async ({ loginPage, liveWallPage
 
 
 // })
+
+
+
+
+
+
+
+
+
+test.skip("009LW-00ss7 | Validate Live Selfie Cam OutPut Link open in Mobile", async ({ loginPage, triviaPage, liveWallPage, functions, page, browser }, testInfo) => {
+        // await test.step("Login Admin And land To Home Screen", async () => {
+        await test.step("Login Admin And land To Home Screen", async () => {
+                await page.goto('/admin/#/sign-in')
+                await loginPage.login(data.username, data.password)
+                const title = await page.title();
+                expect(title).toBe('DXP Admin')
+
+                const screenshot = await page.screenshot();
+                await testInfo.attach("login screenshot", {
+                        contentType: "image/png",
+                        body: screenshot
+                })
+
+
+
+        })
+        let newTab = null;
+        let livewallmobilescreenpage: liveWallMobileScreenPage
+        await test.step("Validate Game Open Section Functionality", async () => {
+
+                //click Mobile Link Btn
+                await liveWallPage.clickLiveWallSection()
+                await page.waitForTimeout(5000)
+                await liveWallPage.clickRefreshBtn()
+                await liveWallPage.clickRefreshBtn()
+
+                await liveWallPage.clickQRCodeBtn()
+
+                //now click on open button
+                newTab = await liveWallPage.clickMobileLinkOpenBtn()
+                livewallmobilescreenpage = new liveWallMobileScreenPage(newTab)
+
+
+        })
+
+
+
+
+
+
+
+})

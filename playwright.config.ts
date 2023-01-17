@@ -1,83 +1,57 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-dotenv.config()
-const { publish, defineConfig } = require('test-results-reporter');
 import { devices } from '@playwright/test';
+var date = new Date();
+var ReportDate =date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2) + ("0" + date.getHours() ).slice(-2) + ("0" + date.getMinutes()).slice(-2) + ("0" + date.getSeconds()).slice(-2);
 
 const config: PlaywrightTestConfig = {
   // testDir: './tests',
   testMatch: [
-    "001Login.test.ts",
-     // "002MobileDesign.test.ts",
-      //"003Language.test.ts",
-     // "004Menu.test.ts",
-    //  "005SignUp.test.ts",
-     // "006GlobalPrizing.test.ts",
-    //  "007PrizeDrop.test.ts",
-     // "008TugOfWar.test.ts",
-     // "009LiveWall.test.ts",    
-    //  "010Arcade.test.ts",
-     // "011AddNewExperiences.test.ts",  
-     // "012Trivia.test.ts"
-    
+
+    // "001Login.test.ts",
+    "002MobileDesign.test.ts",
+    // "003Language.test.ts",
+    // "004Menu.test.ts",
+    // "005SignUp.test.ts",
+    // "006GlobalPrizing.test.ts",
+    "007PrizeDrop.test.ts",
+    // "008TugOfWar.test.ts",
+    // "009LiveWall.test.ts",    
+    // "010Arcade.test.ts",
+    // "011AddNewExperiences.test.ts",     
+    // "012Trivia.test.ts",
+    "guesstheScore.test.ts"
+    // "textExtractFromImage.test.ts"
+        
+
   ],
   timeout: 1 * 30 * 10000,
   expect: {
     timeout: 6000
+    
   },
-  fullyParallel: !true,
+  fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
 
-  // reporter: [['test-results-reporter',  {outputFile: "results.xml"}]],
-  
-  // reporter: process.env.CI
-  // ? [[
-  //     {
-  //     "targets": [
-  //       {
-  //         "name": "teams",
-  //         "inputs": {
-  //           "url": "https://transportedlabs.webhook.office.com/webhookb2/1af1ca62-123b-4948-9a2f-f84e4cb589e6@fee95589-ad46-417d-9636-8b4078359ad9/IncomingWebhook/dbccaaa1799743e38ed4d57ba2b562bc/a6b92662-3ec5-443a-8d4e-10db06594a3c"
-  //         }
-  //       }
-  //     ],
-  //     "results": [
-  //       {
-  //         "type": "testng",
-  //         "files": ["./results.xml"]
-  //       }
-  //     ]
-  //   }
-  // ]],
-    
-  // reporter: process.env.CI
-  // ? [
-  //     [
-  //       "node_modules/playwright-slack-report/dist/src/SlackReporter.js",
-  //       {
-  //         channels: ["slack-testing"], // provide one or more Slack channels
-  //         sendResults: "always", // "always" , "on-failure", "off"
-  //       },
-  //     ],
-  //     ["dot"],
-  //     ["list"],
-  //     ["html"],
-  //   ]
-  // : [["dot"], ["list"], ["html"]],
-  
-  // reporter: [["junit", {
-  //   outputFile: "results.xml"
-  // }]],
+  reporter: process.env.CI ? [["junit", {
+    outputFile: "results.xml"
+  }]] : [["json", {
+    outputFile: "report.json"
+  }], ["html", {
+    open: "never"
+  }]],
 
-  // reporter: [
-  //   ['json', { outputFile: 'results.json' }],
-  // ],
+// reporter: [ ['html', { outputFolder: './playwright-report/'+ ReportDate}]],
 
-  reporter: [['allure-playwright'],['./My-Reporter.js']],
-  // globalTeardown:require.resolve("./mailer.js"), 
+
+
+  // reporter: [["html", {
+  //   open: "never"
+  // }], ["allure-playwright"], ['./My-Reporter.js']],
   
-  
+  // globalTeardown: require.resolve("./mailer.js"),
+
+
 
   use: {
     actionTimeout: 10 * 6000,
@@ -86,10 +60,10 @@ const config: PlaywrightTestConfig = {
 
     launchOptions: {
       // args: ["--start-maximized"],
-      slowMo: 100
+      slowMo: 200
       
   },
-  permissions: ["microphone","camera"],
+  permissions: ["microphone","camera","clipboard-read","clipboard-write"],
     headless: process.env.CI ? true : false,
     browserName: 'chromium',
     channel: 'chrome',

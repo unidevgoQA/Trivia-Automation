@@ -12,10 +12,32 @@ export default class liveWallPage {
   //=======================================================
   //▶▶Start Element
 
+
+
+
+
+  async clickQRCodeBtn() {
+    // await this.page.frameLocator('iframe').waitForSelector("text=Design")
+    const ele = await this.page
+      .frameLocator("iframe")
+      .locator("(//button[contains(@class,'MuiButtonBase-root MuiButton-root')]//img)[1]");
+    await ele.click();
+  }
+
+
+  async clickMobileLinkOpenBtn() {
+    // await this.page.frameLocator('iframe').waitForSelector("text=Design")
+    const ele = await this.page
+      .frameLocator("iframe")
+      .locator("//a[contains(@class,'MuiButtonBase-root MuiIconButton-root')]");
+    await ele.click();
+  }
+  
+
   async clickLiveWallSection() {
     const locator = this.page.locator("//p[text()='Live Wall']");
     expect.soft(locator).toContainText("Live Wall");
-    await locator.click();
+    await locator.click({force:true});
     // console.log("Successfully Click To Tug of War Page ")
   }
 
@@ -752,9 +774,6 @@ async standByInputBoxUnOrdered() {
     await this.page.frameLocator("iframe").locator("(//div[@title='Unordered']//img[1])[3]").click()
 
 }
-
-
-
 
 async standByInputBoxRemove() {
     await this.page.frameLocator("iframe").locator("(//div[@title='Remove(styles) only']//img[1])[3]").click()

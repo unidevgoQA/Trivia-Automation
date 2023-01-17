@@ -7,7 +7,7 @@ import { readFileSync } from 'fs'
 
 
 
-test("004M-001 | Varify Fonts Upload Functionality", async ({ loginPage, MainMenu, languagePage, menuPage, page, }, testInfo) => {
+test("004M-001 | Varify Fonts Upload Functionality", async ({ loginPage,functions, MainMenu, languagePage, menuPage, page, }, testInfo) => {
 
 
 
@@ -20,33 +20,53 @@ test("004M-001 | Varify Fonts Upload Functionality", async ({ loginPage, MainMen
         await MainMenu.mainMenuBtn();
         await MainMenu.clickMobileDesign();
 
-
-
-
-
-
         //Click on the menu page
         await menuPage.clickMenuPage()
-
-
         //verify font text
         await menuPage.checkFontsText();
 
         //Verify upload font text
         await menuPage.checkUploadFontText();
 
-        //upload font into menu page
-        await menuPage.uploadFont();
-
-
-
-
-        await page.waitForTimeout(4000)
-
-
-
+        await functions.fontUploadFunction()
+        await menuPage.clickToUploadFont()
 
 })
+
+
+test("004M-002 | Validate Try To Upload Invalid Font From Admin Side", async ({ loginPage,functions, MainMenu, languagePage, menuPage, page, }, testInfo) => {
+
+
+
+        await page.goto('/admin/#/sign-in')
+        await loginPage.login(data.username, data.password)
+        const title = await page.title();
+        expect(title).toBe('DXP Admin')
+
+        await MainMenu.clickHomeAvater();
+        await MainMenu.mainMenuBtn();
+        await MainMenu.clickMobileDesign();
+
+        //Click on the menu page
+        await menuPage.clickMenuPage()
+        //verify font text
+        await menuPage.checkFontsText();
+
+        //Verify upload font text
+        await menuPage.checkUploadFontText();
+
+        await functions.logoImageUploadFunction()
+        await menuPage.clickToUploadFont()
+
+        page.on("dialog", async (alert) => {
+                console.log('Alert message: ' + alert.message());
+                await alert.accept();
+            });
+            // await page.click("#accept")
+            await page.waitForEvent("dialog");
+
+})
+
 
 test("004M-002 | Varify Color input functionality for menu", async ({ loginPage, MainMenu, languagePage, menuPage, page, }, testInfo) => {
 
@@ -129,7 +149,7 @@ test("004M-002 | Varify Color input functionality for menu", async ({ loginPage,
 
 })
 
-test("004M-004 | Varify Alignment button functionality", async ({ loginPage, MainMenu, languagePage, menuPage, page, }, testInfo) => {
+test("004M-003 | Varify Alignment button functionality", async ({ loginPage, MainMenu, languagePage, menuPage, page, }, testInfo) => {
 
 
 
@@ -171,7 +191,7 @@ test("004M-004 | Varify Alignment button functionality", async ({ loginPage, Mai
 
 })
 
-test("004M-005 | Varify All the show icon disable successfully ", async ({ loginPage, MainMenu, languagePage, menuPage, page, }, testInfo) => {
+test("004M-004 | Varify All the show icon disable successfully ", async ({ loginPage, MainMenu, languagePage, menuPage, page, }, testInfo) => {
 
 
 
@@ -323,7 +343,7 @@ test("004M-006 | Verify all the uploaded icons deleted successfully", async ({ l
 
 })
 
-test("004M-017 | Verify Upload Menu Profile Icon", async ({ loginPage, MainMenu, functions, languagePage, menuPage, page, }, testInfo) => {
+test("004M-007 | Verify Upload Menu Profile Icon", async ({ loginPage, MainMenu, functions, languagePage, menuPage, page, }, testInfo) => {
 
 
 
@@ -367,7 +387,7 @@ test("004M-017 | Verify Upload Menu Profile Icon", async ({ loginPage, MainMenu,
 
 })
 
-test("004M-018 | Verify Upload The Menu Rule Icon", async ({ loginPage, MainMenu, functions, languagePage, menuPage, page, }, testInfo) => {
+test("004M-008 | Verify Upload The Menu Rule Icon", async ({ loginPage, MainMenu, functions, languagePage, menuPage, page, }, testInfo) => {
 
 
 

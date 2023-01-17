@@ -1,12 +1,10 @@
 import test, { expect } from "@fixtures/basePages"
 import * as data from "@testData/login.cred.json";
+import BaseFunctions from "base-function/baseFunctions";
+import { readFileSync } from "fs";
 
 
-
-
-
-
-test("TLL001-01 | Verify login with valid credentials", async ({ loginPage, MainMenu, page, browser }) => {
+test("TLL001-01 | Verify login with valid credentials", async ({ loginPage,page, MainMenu,  browser }) => {
 
 
 
@@ -22,18 +20,17 @@ test("TLL001-01 | Verify login with valid credentials", async ({ loginPage, Main
         // const page = await context.newPage();
 
 
-        await page.goto('/admin/#/sign-in')
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
 
-        await page.waitForTimeout(5000)
         //wait for login button
         await page.waitForSelector("button[type='button']");
 
-        //verify the full login page screen
-        // expect(await page.screenshot({
-        //         fullPage: true
-        //     })).toMatchSnapshot("login-page-UI.png")
+        // verify the full login page screen
+        expect(await page.screenshot({
+                fullPage: true
+            })).toMatchSnapshot("login-page-UI.png")
 
-        //Login with valid credentials 
+        // Login with valid credentials 
         await loginPage.login(data.username, data.password)
 
         const title = await page.title();
@@ -57,12 +54,13 @@ test("TLL001-01 | Verify login with valid credentials", async ({ loginPage, Main
 
 
 })
+
 test("TLL001-02 | Verify login with invalid credentials", async ({ loginPage, MainMenu, page, browser }) => {
 
 
 
 
-        await page.goto('/admin/#/sign-in')
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
 
 
 
@@ -93,11 +91,12 @@ test("TLL001-02 | Verify login with invalid credentials", async ({ loginPage, Ma
 
 
 })
+
 test("TLL001-03 | Verify login with UserName and Password", async ({ loginPage, MainMenu, page, browser }) => {
 
 
 
-        await page.goto('/admin/#/sign-in')
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
 
 
 
@@ -123,3 +122,161 @@ test("TLL001-03 | Verify login with UserName and Password", async ({ loginPage, 
 
 
 })
+
+test("TLL001-04| Verify Cue Logo Is Visible", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })    
+
+        await page.waitForTimeout(4000)
+        await loginPage.verifyCueLogoIsVisible()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+test("TLL001-05| Verify Signin Text Is Visible", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
+        await page.waitForTimeout(4000)
+        await loginPage.verifySigninTextIsVisible()
+})
+
+test("TLL001-06|  Verify Signin Page Title Text IsVisible", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
+        await page.waitForTimeout(4000)
+        await loginPage.verifySigninPageTitleTextIsVisible()
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+test("TLL001-07| Verify Id Label IsVisible", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
+        await page.waitForTimeout(5000)
+        await loginPage.verifyIdLabelIsVisible()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+test("TLL001-08| Verify Secret Label Is Visible", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
+
+        await page.waitForTimeout(5000)
+        await loginPage.verifySecretLabelIsVisible()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+test("TLL001-09| Verify Eye Button Functionality Is Working", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
+        await page.waitForTimeout(4000)        
+        await loginPage.inputSecret()
+        await loginPage.clickEyeBtn()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+
+test("TLL001-10| Validate After Reloading From Login Page All The Element Showing Properly", async ({ loginPage, MainMenu, page, browser }) => {
+
+
+
+        await page.goto('/admin/#/sign-in', { waitUntil: 'domcontentloaded' })
+
+
+        await page.reload();
+        await loginPage.inputSecret()
+        await loginPage.clickEyeBtn()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+

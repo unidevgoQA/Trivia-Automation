@@ -58,8 +58,53 @@ export default class LoginPage {
     
 
     async clickLoginBtn() {
-            await this.page.waitForTimeout(3000)
-            await this.page.click("button:has-text('Login')")
-   
+        await Promise.all([
+            this.page.waitForNavigation(),
+            this.page.click("button:has-text('Login')")
+        ])
+    }
+
+    async verifyCueLogoIsVisible() {
+
+        const ele = this.page.locator("//h1/preceding::div[@class='MuiBox-root css-uycfjs']")
+        expect(ele).toBeVisible()        
+    }
+
+    async verifySigninTextIsVisible() {        
+        const ele = this.page.locator("//h1[text()='Sign in']")
+        expect(ele).toBeVisible()        
+    }
+
+    
+    async verifySigninPageTitleTextIsVisible() {
+
+        const ele = this.page.locator("//p[text()='Sign in and start managing your Games!']")
+        expect(ele).toBeVisible()        
+    }
+
+    async verifyIdLabelIsVisible() {
+
+        const ele = this.page.locator("//label[text()='Id']")
+        expect(ele).toBeVisible()        
+    }
+
+    
+    async verifySecretLabelIsVisible() {
+
+        const ele = this.page.locator("//label[text()='Secret']")
+        expect(ele).toBeVisible()        
+    }
+
+    async inputSecret() {
+
+        const ele = this.page.locator("//input[@type='password']")
+        await ele.fill("Demo Data")     
+    }
+
+    async clickEyeBtn() {
+
+        const ele = this.page.locator("//button[contains(@class,'MuiButtonBase-root MuiIconButton-root')]")
+        expect(ele).toBeVisible()
+        await ele.click()    
     }
 }
