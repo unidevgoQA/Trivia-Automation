@@ -10,12 +10,43 @@ export default class functions {
         }
 
 
-
+        async check_upload_font_text(){
+                const ele= this.page.frameLocator('.css-r99fy3').locator('//p[text()="Upload Font"]')
+                await expect(ele).toBeVisible()
+        }
         async fontUploadFunction() {
-                const filePath0 = "testData/fonts/Thin.otf"
+                const filePath0 = "testData/fonts/Midnight.ttf"
                 this.page.on("filechooser", async (filechooser) => {
                         await filechooser.setFiles([filePath0]);
                 })
+        }
+        
+        async wrong_font_uploader(){
+                const filePath0 = "testData/images/title.jpg"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+                const ele = this.page.frameLocator('iframe').locator('//p[text()="Upload Font"]//preceding-sibling::div')
+                await expect(ele).toBeVisible()
+                await ele.click({button:'left'})
+        }
+
+        
+
+        async uploadJsonFile() {
+                const filePath0 = "testData/Riders.json"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+        }
+
+        async select_font(){
+                const font_ele= this.page.frameLocator('.css-r99fy3').locator('//p[text()="Aa"]').last()
+                await font_ele.click({button:'left'})
+        }
+
+        async delete_font(){
+                await this.page.frameLocator('.css-r99fy3').locator('//p[text()="Aa"]//following-sibling::button').click()
         }
 
         async bannerImageUploadFunction() {
@@ -34,6 +65,41 @@ export default class functions {
 
         async logoImageUploadFunction() {
                 const filePath0 = "testData/logos/gameTeamLogo.jpg"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+        }
+
+        async homeIconUploadHelper() {
+                const filePath0 = "testData/icons/home.png"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+        }
+
+        async prizeIconUploadHelper() {
+                const filePath0 = "testData/icons/prize.png"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+        }
+
+        async howToPlayIconUploadHelper() {
+                const filePath0 = "testData/icons/howtoplay.png"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+        }
+
+        async rulesIconUploadHelper() {
+                const filePath0 = "testData/icons/rules.png"
+                this.page.on("filechooser", async (filechooser) => {
+                        await filechooser.setFiles([filePath0]);
+                })
+        }
+
+        async userProfileIconUploadHelper() {
+                const filePath0 = "testData/icons/profile.png"
                 this.page.on("filechooser", async (filechooser) => {
                         await filechooser.setFiles([filePath0]);
                 })
@@ -160,20 +226,21 @@ export default class functions {
                 // const currentImageRatioTitleText = await this.page.frameLocator('iframe').locator("//p[text()='Current Image Size Ratio:']")
                 // expect.soft(currentImageRatioTitleText).toContainText("Current Image Size Ratio:")
 
-                const chooseRatio = await this.page.frameLocator('iframe').locator("(//div[@backgroundcolor='#212936']//div)[2]")
-                await chooseRatio.click({force:true})
-                await this.page.waitForTimeout(3000)
+                // const chooseRatio = await this.page.frameLocator('iframe').locator("(//div[@backgroundcolor='#212936']//div)[2]")
+                // await chooseRatio.click({ force: true })
+                // await this.page.waitForTimeout(3000)
 
-                const selectNone = await this.page.frameLocator('iframe').locator("//li[text()='None']")
-                await selectNone.click({force:true})
+                // const selectNone = await this.page.frameLocator('iframe').locator("//ul[@role='listbox']//li[1]")
+                // await selectNone.click({ force: true })
 
-                await this.page.waitForLoadState("networkidle")
+                // await this.page.waitForLoadState("networkidle")
 
                 const cropperSaveBtn = await this.page.frameLocator('iframe').locator("//button[text()='Save']")
                 expect(cropperSaveBtn).toContainText("Save")
-                await cropperSaveBtn.click()
+                await cropperSaveBtn.click({force:true})
+                await this.page.waitForTimeout(3000)
 
-                await this.page.waitForLoadState("networkidle")
+                // await this.page.waitForLoadState("networkidle")
 
 
 
@@ -187,11 +254,36 @@ export default class functions {
 
         }
 
+        async fileUploadCropperForMainMenu() {
+
+
+                const chooseBtn = await this.page.locator("//button[text()='Choose File']")
+                await chooseBtn.click()
+
+
+
+
+                const cropperSaveBtn = await this.page.locator("//div[@class='MuiBox-root css-1p65aex']//button[1]")
+                expect(cropperSaveBtn).toContainText("Save")
+                await cropperSaveBtn.click()
+
+
+
+
+
+
+
+
+
+
+
+        }
 
         async fileUploadCropperWithoutIframe() {
 
                 // const imageText = await this.page.locator("text='Image'")
                 // expect(imageText).toContainText("Image")
+                await this.page.waitForSelector("//button[text()='Choose File']")
 
                 const ratioText = await this.page.locator("text='Ratio:'")
                 expect.soft(ratioText).toContainText("Ratio:")
@@ -353,7 +445,7 @@ export default class functions {
                         await filechooser.setFiles([filePath0]);
                 })
                 // const popupPromise = this.page.waitForEvent('popup');
-                await chooseBtn.click()
+                await chooseBtn.click({delay:300})
                 // const popup = await popupPromise;
 
                 // await popup.locator("//p[text()='File type is not supported']").isVisible()
@@ -474,9 +566,9 @@ export default class functions {
 
 
                 let menu = await this.page.locator("//p[text()='Menu']")
-                await menu.click({force:true})
+                await menu.click({ force: true })
 
-                await this.page.locator('text=Bottom').click({force:true});
+                await this.page.locator('text=Bottom').click({ force: true });
 
 
         }
@@ -486,7 +578,7 @@ export default class functions {
 
                 await this.page.frameLocator('iframe').locator('input[name="email"]').fill("jon@email.com")
 
-            //     await page.frameLocator('iframe').locator('input[name="age"]').fill("23")
+                //     await page.frameLocator('iframe').locator('input[name="age"]').fill("23")
 
                 // await this.page.click('//input[@name="birthDate"]');
 
@@ -526,10 +618,13 @@ export default class functions {
         }
 
 
-        getRandomName () { 
-                return "Auto"+ Date.now() + "Name"
-            }
-  
+        getRandomName() {
+                return "Auto" + Date.now() + "Name"
+        }
+        async clickAnonymouLogin(){
+                
+        }
+
 
 }
 
